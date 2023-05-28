@@ -79,5 +79,10 @@ ng serve
 2. Assurez-vous que les méthodes d'envoi de courriels utilisent les attributs d'utilisateurs corrects, tels que l'adresse e-mail.
 
 
+##
+Contributeurs: 
+- [Youssef BOUCHIKHI](https://github.com/Youssef-Bu)
+- [Achraf GOUNADFA](https://github.com/Achrafgou)
+
 
 
