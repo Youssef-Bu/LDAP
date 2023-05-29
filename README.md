@@ -8,17 +8,18 @@ Ce projet est une application web permettant de gérer les utilisateurs d'un ann
 - Recherche d'utilisateurs dans l'annuaire LDAP.
 - Création de nouveaux utilisateurs dans l'annuaire LDAP.
 - Interface pour la gestion des utilisateurs.
-- Intégration avec le serveur FTP FileZilla pour autoriser l'accès aux utilisateurs.
-- Intégration avec le serveur SMTP pour l'envoi de courriels.
+- Autorisation des utilisateurs à accéder au serveur FTP FileZilla via LDAP.
+- Envoi de courriels à partir du serveur SMTP en utilisant les informations d'utilisateur LDAP.
 
-## Configuration
+## Prérequis
 
-Avant de commencer, assurez-vous d'avoir effectué les étapes suivantes :
+Avant de commencer, assurez-vous d'avoir les éléments suivants installés sur votre machine :
 
-1. Installez Node.js et Angular CLI sur votre machine.
-2. Configurez un serveur LDAP Apache avec les attributs d'utilisateurs requis (nom, prénom, nom d'utilisateur, mot de passe, etc.).
-3. Configurez le serveur FTP FileZilla pour autoriser l'accès aux utilisateurs à partir de l'annuaire LDAP.
-4. Configurez le serveur SMTP avec les informations de connexion appropriées.
+- Node.js <img align="center" alt="Node.js Logo" height="20" width="25" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/30px-Node.js_logo.svg.png">
+- Angular CLI <img align="center" alt="Angular Logo" height="25" width="25" src="https://angular.io/assets/images/logos/angular/angular.svg">
+- Serveur LDAP Apache configuré avec les attributs d'utilisateurs requis 
+- Serveur FTP FileZilla configuré pour l'accès via LDAP
+- Serveur SMTP avec les informations de connexion appropriées
 
 ## Installation
 
@@ -34,25 +35,38 @@ cd LDAP
 ```
 npm i
 ```
-4. On va refaire ça pour la partie front
+4. Accédez au répertoire du projet Angular pour la gestion des utilisateurs :
 ```
 cd ldap-management
 ```
+5. Installez les dépendances du projet Angular :
 ```
 npm i
 ```
 
+## Configuration
 
+### Configuration LDAP
 
-## Configuration LDAP
-
-1. Dans le fichier `ldap.service.ts`, mettez à jour l'URL du serveur LDAP en remplaçant `http://localhost:3000/ldap` par l'URL de votre serveur LDAP.
+1. Dans le fichier `ldap.service.ts` du projet Angular, mettez à jour l'URL du serveur LDAP en remplaçant `http://localhost:3000/ldap` par l'URL de votre serveur LDAP.
 
 2. Assurez-vous que les attributs d'utilisateurs utilisés dans les méthodes `createUser` et `searchUsers` correspondent à ceux de votre annuaire LDAP.
 
+### Configuration FTP (FileZilla)
+
+1. Ouvrez FileZilla et accédez aux paramètres du serveur FTP.
+
+2. Configurez les autorisations d'accès des utilisateurs en utilisant les informations de l'annuaire LDAP.
+
+### Configuration SMTP
+
+1. Dans le fichier `ldap.service.ts` du projet Angular, mettez à jour les informations de connexion SMTP (serveur, port et identifiants) dans les méthodes appropriées.
+
+2. Assurez-vous que les méthodes d'envoi de courriels utilisent les attributs d'utilisateurs corrects, tels que l'adresse e-mail.
+
 ## Utilisation
 
-1. Lancez l'application Angular en exécutant la commande suivante :
+1. Lancez l'application Angular de gestion des utilisateurs en exécutant les commandes suivante :
 ```
 npm run start
 ```
@@ -62,21 +76,6 @@ cd ldap-management
 ```
 ng serve
 ```
-
-2. Ouvrez votre navigateur et accédez à l'URL `http://localhost:4200` pour utiliser l'application de gestion des utilisateurs.
-
-## Configuration FTP (FileZilla)
-
-1. Ouvrez FileZilla et accédez aux paramètres du serveur FTP.
-
-2. Configurez les autorisations d'accès des utilisateurs en utilisant les informations de l'annuaire LDAP.
-
-
-## Configuration SMTP
-
-1. Dans le fichier `ldap.service.ts`, mettez à jour les informations de connexion SMTP (serveur, port, identifiants, etc.) dans les méthodes appropriées.
-
-2. Assurez-vous que les méthodes d'envoi de courriels utilisent les attributs d'utilisateurs corrects, tels que l'adresse e-mail.
 
 
 ## Contributeurs
