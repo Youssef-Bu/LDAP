@@ -1,5 +1,5 @@
-const SMTPServer = require("smtp-server").SMTPServer;
-const mailparser = require("mailparser");
+import { SMTPServer } from "smtp-server";
+import { Parser } from "mailparser";
 
 const server = new SMTPServer({
   onAuth(auth, session, callback) {
@@ -10,7 +10,7 @@ const server = new SMTPServer({
   onData(stream, session, callback) {
     const emails = [];
 
-    const parser = new mailparser.Parser();
+    const parser = new Parser();
 
     parser.on("headers", (headers) => {
       const email = {
